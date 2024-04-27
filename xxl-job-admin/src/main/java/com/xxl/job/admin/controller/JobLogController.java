@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * index controller
+ * 任务调度日志管理
  * @author xuxueli 2015-12-19 16:13:16
  */
 @Controller
@@ -48,7 +48,9 @@ public class JobLogController {
 	public XxlJobLogDao xxlJobLogDao;
 
 	@RequestMapping
-	public String index(HttpServletRequest request, Model model, @RequestParam(required = false, defaultValue = "0") Integer jobId) {
+	public String index(HttpServletRequest request,
+						Model model,
+						@RequestParam(required = false, defaultValue = "0") Integer jobId) {
 
 		// 执行器列表
 		List<XxlJobGroup> jobGroupList_all =  xxlJobGroupDao.findAll();

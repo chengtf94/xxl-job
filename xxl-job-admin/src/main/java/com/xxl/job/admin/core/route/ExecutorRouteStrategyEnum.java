@@ -4,10 +4,14 @@ import com.xxl.job.admin.core.route.strategy.*;
 import com.xxl.job.admin.core.util.I18nUtil;
 
 /**
+ * 执行器路由策略美剧
  * Created by xuxueli on 17/3/10.
  */
 public enum ExecutorRouteStrategyEnum {
 
+    /**
+     * 第一个、最后一个、round轮询、随机、一致性哈希、LFU、LRU、failover故障转移、busyover忙碌转移、分片广播
+     */
     FIRST(I18nUtil.getString("jobconf_route_first"), new ExecutorRouteFirst()),
     LAST(I18nUtil.getString("jobconf_route_last"), new ExecutorRouteLast()),
     ROUND(I18nUtil.getString("jobconf_route_round"), new ExecutorRouteRound()),

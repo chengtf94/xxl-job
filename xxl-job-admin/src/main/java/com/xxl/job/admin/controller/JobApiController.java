@@ -29,7 +29,7 @@ public class JobApiController {
     private AdminBiz adminBiz;
 
     /**
-     * api
+     * api：包括注册执行器、取消注册执行器、执行回调
      *
      * @param uri
      * @param data
@@ -38,7 +38,9 @@ public class JobApiController {
     @RequestMapping("/{uri}")
     @ResponseBody
     @PermissionLimit(limit=false)
-    public ReturnT<String> api(HttpServletRequest request, @PathVariable("uri") String uri, @RequestBody(required = false) String data) {
+    public ReturnT<String> api(HttpServletRequest request,
+                               @PathVariable("uri") String uri,
+                               @RequestBody(required = false) String data) {
 
         // valid
         if (!"POST".equalsIgnoreCase(request.getMethod())) {

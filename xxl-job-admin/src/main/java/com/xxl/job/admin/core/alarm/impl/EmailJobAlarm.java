@@ -19,7 +19,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * job alarm by email
+ * 邮件告警：job alarm by email
  *
  * @author xuxueli 2020-01-19
  */

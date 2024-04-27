@@ -13,13 +13,15 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
+ * 任务调度器
  * @author xuxueli 2018-10-28 00:18:17
  */
-
 public class XxlJobScheduler  {
     private static final Logger logger = LoggerFactory.getLogger(XxlJobScheduler.class);
 
-
+    /**
+     * 初始化
+     */
     public void init() throws Exception {
         // init i18n
         initI18n();

@@ -33,7 +33,7 @@ import java.text.ParseException;
 import java.util.*;
 
 /**
- * index controller
+ * 任务管理
  * @author xuxueli 2015-12-19 16:13:16
  */
 @Controller
@@ -47,7 +47,9 @@ public class JobInfoController {
 	private XxlJobService xxlJobService;
 	
 	@RequestMapping
-	public String index(HttpServletRequest request, Model model, @RequestParam(required = false, defaultValue = "-1") int jobGroup) {
+	public String index(HttpServletRequest request,
+						Model model,
+						@RequestParam(required = false, defaultValue = "-1") int jobGroup) {
 
 		// 枚举-字典
 		model.addAttribute("ExecutorRouteStrategyEnum", ExecutorRouteStrategyEnum.values());	    // 路由策略-列表

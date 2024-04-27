@@ -15,33 +15,26 @@ import javax.servlet.http.HttpServletResponse;
 import java.math.BigInteger;
 
 /**
+ * 登录服务
  * @author xuxueli 2019-05-04 22:13:264
  */
 @Configuration
 public class LoginService {
 
+    /** 登录唯一标识 */
     public static final String LOGIN_IDENTITY_KEY = "XXL_JOB_LOGIN_IDENTITY";
 
     @Resource
     private XxlJobUserDao xxlJobUserDao;
 
-
-    private String makeToken(XxlJobUser xxlJobUser){
-        String tokenJson = JacksonUtil.writeValueAsString(xxlJobUser);
-        String tokenHex = new BigInteger(tokenJson.getBytes()).toString(16);
-        return tokenHex;
-    }
-    private XxlJobUser parseToken(String tokenHex){
-        XxlJobUser xxlJobUser = null;
-        if (tokenHex != null) {
-            String tokenJson = new String(new BigInteger(tokenHex, 16).toByteArray());      // username_password(md5)
-            xxlJobUser = JacksonUtil.readValue(tokenJson, XxlJobUser.class);
-        }
-        return xxlJobUser;
-    }
-
-
-    public ReturnT<String> login(HttpServletRequest request, HttpServletResponse response, String username, String password, boolean ifRemember){
+    /**
+     * 登录：密码基于MD5加密
+     */
+    public ReturnT<String> login(HttpServletRequest request,
+                                 HttpServletResponse response,
+                                 String username,
+                                 String password,
+                                 boolean ifRemember){
 
         // param
         if (username==null || username.trim().length()==0 || password==null || password.trim().length()==0){
@@ -66,10 +59,7 @@ public class LoginService {
     }
 
     /**
-     * logout
-     *
-     * @param request
-     * @param response
+     * 注销登录
      */
     public ReturnT<String> logout(HttpServletRequest request, HttpServletResponse response){
         CookieUtil.remove(request, response, LOGIN_IDENTITY_KEY);
@@ -78,9 +68,6 @@ public class LoginService {
 
     /**
      * logout
-     *
-     * @param request
-     * @return
      */
     public XxlJobUser ifLogin(HttpServletRequest request, HttpServletResponse response){
         String cookieToken = CookieUtil.getValue(request, LOGIN_IDENTITY_KEY);
@@ -103,5 +90,19 @@ public class LoginService {
         return null;
     }
 
+    /** 序列化用户信息、反序列化用户信息 */
+    private String makeToken(XxlJobUser xxlJobUser){
+        String tokenJson = JacksonUtil.writeValueAsString(xxlJobUser);
+        String tokenHex = new BigInteger(tokenJson.getBytes()).toString(16);
+        return tokenHex;
+    }
+    private XxlJobUser parseToken(String tokenHex){
+        XxlJobUser xxlJobUser = null;
+        if (tokenHex != null) {
+            String tokenJson = new String(new BigInteger(tokenHex, 16).toByteArray());      // username_password(md5)
+            xxlJobUser = JacksonUtil.readValue(tokenJson, XxlJobUser.class);
+        }
+        return xxlJobUser;
+    }
 
 }

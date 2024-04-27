@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 /**
- * job group controller
+ * 执行器管理：job group controller
  * @author xuxueli 2016-10-02 20:52:56
  */
 @Controller

@@ -1,6 +1,7 @@
 package com.xxl.job.admin.core.exception;
 
 /**
+ * 自定义异常
  * @author xuxueli 2019-05-04 23:19:29
  */
 public class XxlJobException extends RuntimeException {

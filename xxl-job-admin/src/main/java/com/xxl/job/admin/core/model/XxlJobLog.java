@@ -14,19 +14,19 @@ public class XxlJobLog {
 	private int jobGroup;
 	private int jobId;
 
-	/** 执行器信息：execute info */
+	/** 执行信息：execute info */
 	private String executorAddress;
 	private String executorHandler;
 	private String executorParam;
 	private String executorShardingParam;
 	private int executorFailRetryCount;
 	
-	/** 触发器信息：trigger info */
+	/** 触发信息：trigger info */
 	private Date triggerTime;
 	private int triggerCode;
 	private String triggerMsg;
 	
-	/** 处理器信息：handle info */
+	/** 处理信息：handle info */
 	private Date handleTime;
 	private int handleCode;
 	private String handleMsg;
