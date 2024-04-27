@@ -5,9 +5,7 @@ import java.util.Date;
 public class XxlJobLogReport {
 
     private int id;
-
     private Date triggerDay;
-
     private int runningCount;
     private int sucCount;
     private int failCount;

@@ -6,12 +6,13 @@ import org.springframework.util.StringUtils;
  * @author xuxueli 2019-05-04 16:43:12
  */
 public class XxlJobUser {
-	
+
+	/** 主键、账号、密码、角色（0-普通用户、1-管理员）、权限（执行器ID列表，多个逗号分割） */
 	private int id;
-	private String username;		// 账号
-	private String password;		// 密码
-	private int role;				// 角色：0-普通用户、1-管理员
-	private String permission;	// 权限：执行器ID列表，多个逗号分割
+	private String username;
+	private String password;
+	private int role;
+	private String permission;
 
 	public int getId() {
 		return id;

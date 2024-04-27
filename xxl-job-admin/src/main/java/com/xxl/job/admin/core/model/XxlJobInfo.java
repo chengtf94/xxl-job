@@ -3,45 +3,49 @@ package com.xxl.job.admin.core.model;
 import java.util.Date;
 
 /**
- * xxl-job info
+ * 任务：xxl-job info
  *
  * @author xuxueli  2016-1-12 18:25:49
  */
 public class XxlJobInfo {
-	
-	private int id;				// 主键ID
-	
-	private int jobGroup;		// 执行器主键ID
+
+	/** 主键ID、执行器主键ID、任务描述、负责人、报警邮件 */
+	private int id;
+	private int jobGroup;
 	private String jobDesc;
-	
+	private String author;
+	private String alarmEmail;
+
+	/** 调度类型、调度配置（值含义取决于调度类型）、调度过期策略 */
+	private String scheduleType;
+	private String scheduleConf;
+	private String misfireStrategy;
+
+	/** 执行器路由策略、任务Handler名称、任务参数、阻塞处理策略、任务执行超时时间（单位为s）、失败重试次数 */
+	private String executorRouteStrategy;
+	private String executorHandler;
+	private String executorParam;
+	private String executorBlockStrategy;
+	private int executorTimeout;
+	private int executorFailRetryCount;
+
+	/** GLUE类型（GlueTypeEnum）、GLUE源代码、GLUE备注、GLUE更新时间 */
+	private String glueType;
+	private String glueSource;
+	private String glueRemark;
+	private Date glueUpdatetime;
+
+	/** 子任务ID（多个逗号分隔） */
+	private String childJobId;
+
+	/** 调度状态（0-停止，1-运行）、上次调度时间、下次调度时间 */
+	private int triggerStatus;
+	private long triggerLastTime;
+	private long triggerNextTime;
+
+	/** 创建时间、更新时间 */
 	private Date addTime;
 	private Date updateTime;
-	
-	private String author;		// 负责人
-	private String alarmEmail;	// 报警邮件
-
-	private String scheduleType;			// 调度类型
-	private String scheduleConf;			// 调度配置，值含义取决于调度类型
-	private String misfireStrategy;			// 调度过期策略
-
-	private String executorRouteStrategy;	// 执行器路由策略
-	private String executorHandler;		    // 执行器，任务Handler名称
-	private String executorParam;		    // 执行器，任务参数
-	private String executorBlockStrategy;	// 阻塞处理策略
-	private int executorTimeout;     		// 任务执行超时时间，单位秒
-	private int executorFailRetryCount;		// 失败重试次数
-	
-	private String glueType;		// GLUE类型	#com.xxl.job.core.glue.GlueTypeEnum
-	private String glueSource;		// GLUE源代码
-	private String glueRemark;		// GLUE备注
-	private Date glueUpdatetime;	// GLUE更新时间
-
-	private String childJobId;		// 子任务ID，多个逗号分隔
-
-	private int triggerStatus;		// 调度状态：0-停止，1-运行
-	private long triggerLastTime;	// 上次调度时间
-	private long triggerNextTime;	// 下次调度时间
-
 
 	public int getId() {
 		return id;
