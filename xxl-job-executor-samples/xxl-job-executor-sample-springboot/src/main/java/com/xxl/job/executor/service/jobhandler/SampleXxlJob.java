@@ -31,6 +31,12 @@ public class SampleXxlJob {
     private static Logger logger = LoggerFactory.getLogger(SampleXxlJob.class);
 
 
+    @XxlJob("ctfDemoJobHandler")
+    public void ctfDemoJobHandler() throws Exception {
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("ctfDemoJobHandler executed.");
+    }
+
     /**
      * 1、简单任务示例（Bean模式）
      */

@@ -21,7 +21,7 @@ import java.util.concurrent.*;
 
 
 /**
- * handler thread
+ * 任务处理线程：handler thread
  * @author xuxueli 2016-1-16 19:52:47
  */
 public class JobThread extends Thread{

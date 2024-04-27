@@ -132,7 +132,6 @@ public class EmbedServer {
         @Override
         protected void channelRead0(final ChannelHandlerContext ctx, FullHttpRequest msg) throws Exception {
             // request parse
-            //final byte[] requestBytes = ByteBufUtil.getBytes(msg.content());    // byteBuf.toString(io.netty.util.CharsetUtil.UTF_8);
             String requestData = msg.content().toString(CharsetUtil.UTF_8);
             String uri = msg.uri();
             HttpMethod httpMethod = msg.method();
@@ -140,18 +139,15 @@ public class EmbedServer {
             String accessTokenReq = msg.headers().get(XxlJobRemotingUtil.XXL_JOB_ACCESS_TOKEN);
 
             // invoke
-            bizThreadPool.execute(new Runnable() {
-                @Override
-                public void run() {
-                    // do invoke
-                    Object responseObj = process(httpMethod, uri, requestData, accessTokenReq);
+            bizThreadPool.execute(() -> {
+                // do invoke
+                Object responseObj = process(httpMethod, uri, requestData, accessTokenReq);
 
-                    // to json
-                    String responseJson = GsonTool.toJson(responseObj);
+                // to json
+                String responseJson = GsonTool.toJson(responseObj);
 
-                    // write response
-                    writeResponse(ctx, keepAlive, responseJson);
-                }
+                // write response
+                writeResponse(ctx, keepAlive, responseJson);
             });
         }
 

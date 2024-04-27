@@ -17,7 +17,6 @@ import org.springframework.core.annotation.AnnotatedElementUtils;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-
 /**
  * Spring执行器：xxl-job executor (for spring)
  *
